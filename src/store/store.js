@@ -23,6 +23,7 @@ function initStore(
       : null;
     switch (action.type) {
       case actionTypes.EMIT_NEW_USER_MESSAGE: {
+        console.log('here');
         socket.emit('user_uttered', {
           message: action.text,
           customData: socket.customData,
