@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import SocialLogin  from './src/components/Widget/components/Conversation/components/Messages/components/SocialLogin';
+import WhatsAppInput  from './src/components/Widget/components/Conversation/components/Messages/components/WhatsAppInput';
 import { Widget, toggleChat, openChat, closeChat, showChat, hideChat, isOpen, isVisible, send, toggleInputDisabled } from './index_for_react_app';
 
 const plugin = {
@@ -46,6 +48,15 @@ const plugin = {
         userBackgroundColor={args.userBackgroundColor}
         assistTextColor={args.assistTextColor}
         assistBackgoundColor={args.assistBackgoundColor}
+        customComponent={(message) => {
+          if (message.facebook){
+           return(<SocialLogin message={message} />)
+          }else if(message.phone_input){
+            return(<WhatsAppInput />)
+          }else{
+            return(<div></div>)
+          }
+        }}
       />, document.querySelector(args.selector)
     );
   }
