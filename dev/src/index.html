@@ -12,8 +12,8 @@
         version: 'v2.6'
       });
       window.FB.Event.subscribe('send_to_messenger', function (e) {
-        console.log(e)
         if (e.event == 'opt_in') {
+          console.log(e)
           WebChat.send('/enter_data{"messenger_id":"' + e.ref.toString() + '"}');
         }
 

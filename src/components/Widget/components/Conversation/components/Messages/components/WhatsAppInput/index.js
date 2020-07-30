@@ -8,8 +8,8 @@ import {
     changeInputFieldHint,
 } from 'actions';
 
-import PhoneInput from 'react-phone-number-input';
-import 'react-phone-number-input/style.css';
+// import PhoneInput from 'react-phone-number-input';
+// import 'react-phone-number-input/style.css';
 import './styles.scss';
 
 const WhatsAppInput = props => {
@@ -32,7 +32,7 @@ const WhatsAppInput = props => {
     };
     return (
         <div className="center-whatsapp-container">
-            <div className="opt-in-status">{buttonText}</div>
+            {/* <div className="opt-in-status">{buttonText}</div>
             <PhoneInput
                 disabled={buttonDisabled}
                 className="whatsapp-input"
@@ -42,7 +42,7 @@ const WhatsAppInput = props => {
             />
             <button onClick={e => sendPhoneNumber(e, value)} className="whatsapp-button">
                 Send
-            </button>
+            </button> */}
         </div>
     );
 };

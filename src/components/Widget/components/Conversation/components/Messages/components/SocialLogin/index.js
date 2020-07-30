@@ -45,7 +45,6 @@ class SocialLogin extends PureComponent {
                     color="blue"
                     size="xlarge"
                 >Loading...</div>
-                <div>Type "menu" if you nneed help</div>
             </div>
         );
     }
