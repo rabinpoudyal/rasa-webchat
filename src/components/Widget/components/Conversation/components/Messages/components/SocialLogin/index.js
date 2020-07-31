@@ -30,18 +30,18 @@ class SocialLogin extends PureComponent {
 
         
     render() {
-        // const { app_id='123', page_id='123' } = this.props.message.facebook;
-        // const optin_for = this.props.message.facebook.optin_for[0];
-        // const article_id = this.getArticleID();
-        // const hash = `optin_for=${optin_for}+ref=${Math.random().toString(30).substr(2,28)}+aid=${article_id}`
+        const { app_id='123', page_id='123' } = this.props.message.facebook;
+        const optin_for = this.props.message.facebook.optin_for[0];
+        const article_id = this.getArticleID();
+        const hash = `optin_for=${optin_for}+ref=${Math.random().toString(30).substr(2,28)}+aid=${article_id}`
                 
         return (
             <div ref={(s) => this._scope = s} className="rw-replies">
                 <div
                     className="fb-send-to-messenger"
-                    messenger_app_id="1688927804768378"
-                    page_id="817550794974790"
-                    data-ref="something"
+                    messenger_app_id={app_id}
+                    page_id={page_id}
+                    data-ref={hash}
                     color="blue"
                     size="xlarge"
                 >Loading...</div>
