@@ -10,14 +10,9 @@ class SocialLogin extends PureComponent {
     }
 
     componentDidMount(){
-        // if (window.FB) {
+        if (window.FB) {
             window.FB.XFBML.parse(this._scope);
-        // }
-        console.log('rerendered.......')
-    }
-
-    componentWillUpdate(){
-        console.log('will update')
+        }
     }
 
     getWebsiteUrl = () => {

@@ -61,18 +61,6 @@ const Header = ({
                 {subtitle && <span className={profileAvatar && 'rw-with-avatar'}>{subtitle}</span>}
             </div>
             {!connected && <span className="rw-loading">{connectingText}</span>}
-            <div className="rw-replies">
-            <div
-                className="fb-send-to-messenger"
-                messenger_app_id="1688927804768378"
-                page_id="817550794974790"
-                data-ref="something"
-                color="blue"
-                size="xlarge"
-            >
-                Loading...
-            </div>
-            </div>
         </div>
     );
 };
