@@ -144,3 +144,14 @@
     }
   }
 }
+
+.rw-conversation-container .rw-close-button{
+  display: flex;
+  border: none;
+  background-color: rgb(32, 131, 224);
+}
+
+.rw-close{
+  height: 30px;
+  width: 30px;
+}

@@ -35,11 +35,11 @@
   justify-content: center;
   background-color: $tertiary;
   border: 0;
-  border-radius: 50%;
-  box-shadow: 0px 2px 10px 1px $grey-3;
+  border-radius: 999rem;
+  box-shadow: 10px 10px 10px 0px $grey-3;
   height: 60px;
   margin: 0;
-  width: 60px;
+  width: 150px;
   box-sizing: border-box;
 
   &:focus {
@@ -267,4 +267,14 @@
   .#{$namespace}hide-sm {
     display: none;
   }
+}
+
+#help-text{
+  color: #f0ebeb !important;
+  fill: #f0ebeb !important;
+  // padding: 0.92857rem 1.57143rem;
+  // border-radius: 999rem;
+  // bottom: 0;
+  letter-spacing: 0.6;
+  font-size: 1.07143rem;
 }

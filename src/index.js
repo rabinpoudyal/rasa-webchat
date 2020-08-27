@@ -228,7 +228,7 @@ ConnectedWidget.defaultProps = {
   protocol: 'socketio',
   socketUrl: 'http://localhost',
   protocolOptions: {},
-  badge: 0,
+  badge: 1, //changed
   embedded: false,
   params: {
     storage: 'local'

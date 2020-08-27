@@ -595,7 +595,7 @@ class Widget extends Component {
         fullScreenMode={this.props.fullScreenMode}
         isChatOpen={this.props.isChatOpen}
         isChatVisible={this.props.isChatVisible}
-        badge={this.props.badge}
+        badge={this.props.badge} 
         embedded={this.props.embedded}
         params={this.props.params}
         openLauncherImage={this.props.openLauncherImage}
