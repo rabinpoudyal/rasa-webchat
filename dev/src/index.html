@@ -2,94 +2,84 @@
 <html lang="en">
 
 <head>
-  <title>Botfront - Web Chat</title>
-
-
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fe</title>
+  <script src="./index.js"></script>
 </head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
-  <!-- <a href="#" onclick="WebChat.send('/chitchat.greet')">Send chitchat.greet without text</a>
-  <br />
-  <a href="#" onclick="WebChat.send('/chitchat.greet', 'salut')">Send chitchat.greet with text</a>
-  <span style="height: 400px; display: block;">test</span>
-  <span style="height: 400px; display: block;">test</span>
-  <span style="height: 400px; display: block;">test</span>
-  <h1 class="test"> test</h1>
-  <button class="my-button"> MY BUTTON</button>
-  <div style="width: 400px; height: 2000px; border: 3px solid lightsalmon;" id="webchat" /> -->
-    <script src="./index.js"></script>
-<div id="webchat"></div>
-  <div class="fb-send-to-messenger" messenger_app_id="1688927804768378" page_id="817550794974790" color="blue"
-  size="xlarge">
-</div>
-
-  <script>
-    window.fbAsyncInit = function () {
-
+  <div id="webchat"></div>
+  <!-- <script>
+    window.fbAsyncInit = function() {
       FB.init({
-        appId: '1688927804768378',
-        xfbml: true,
-        version: 'v7.0'
+        appId            : '302093891174396',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v7.0'
       });
-      FB.Event.subscribe('send_to_messenger', function (e) {
-        console.log(e);
-        if (e.event == 'opt_in') {
-          //console.log(e)
-          //WebChat.send('/enter_data{"messenger_id":"' + e.ref.toString() + '"}');
-        }
-
-      });
+  
+      window.FB.Event.subscribe('send_to_messenger', function (e) {
+      console.log('webhook...');
+          console.log(e);
+        });
+    };
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script> -->
+  <script>
+    function getDeviceType() {
+      const ua = navigator.userAgent;
+      if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+        return "tablet";
+      }
+      if (
+        /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+          ua
+        )
+      ) {
+        return "mobile";
+      }
+      return "desktop";
+    };
+    try {
+      var article_id = 50
+      var destination = "Texas";
+      var device_type = getDeviceType();
+    } catch (e) {
+      var destination = "Singapore";
+      var article_id = 0;
+      var device_type = "unknown";
     }
 
-  </script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
- 
-  <script>
     WebChat.default.init({
-      // embedded: true,
       selector: "#webchat",
-      initPayload: "/greet",
-      socketUrl: "http://chat.trip101.com",
+      initPayload: "/talk_to_local_expert" + JSON.stringify({ "destination": destination, "article_id": article_id }),
+      // connectOn: "open",
+      customData: { "language": "en" },
+      socketUrl: "http://localhost:5005",
       socketPath: "/socket.io/",
-      customData: {
-        language: 'en'
-      },
-      subtitle: 'Aa',
-      inputTextFieldHint: "Type a message...",
-      connectingText: "Waiting for server...",
-      // tooltipPayload: '/plan_vacation{"destination": "Singapore"}',
-      tooltipPayload: '/present_offer{"destination": "Singapore"}',
-      // tooltipPayload: '/talk_to_local_expert',
-      //profileAvatar: "https://storage.googleapis.com/dev-media-store-botfront-cloud/logo_square_circle_white_bg256.jpg",
-      hideWhenNotConnected: false,
-      //   defaultHighlightAnimation: `@-webkit-keyframes default-botfront-blinker-animation {
-      //     from {
-      //     outline: solid rgba(255,0,0,0);
-      //   }
-      //   to {
-      //     outline: solid red;
-      //   }
-      // }`,
-      onSocketEvent: {
-        'bot_uttered': () => console.log('bot uttered'),
-      },
-      showCloseButton: true,
-      fullScreenMode: true,
-      showFullScreenButton: true,
-      docViewer: false,
+      storage: "session",
       params: {
         images: {
           dims: {
             width: 300,
-            height: 200
+            height: 200,
           }
         },
         storage: "session"
-      }
-    })
+      },
+      title: "TripBot",
+      subtitle: "Travel guides from travel experts",
+      //profileAvatar: "https://trip101.com/icon-55-precomposed.png",
+      //openLauncherImage: "https://trip101.com/chat.png",
+      //closeImage: "https://trip101.com/close.png",
+      showCloseButton: true,
+      autoClearCache: true,
+      // tooltipPayload: '/talk_to_local_expert' + JSON.stringify({"destination": destination, "article_id": article_id}),
+
+      //tooltipPayload: "/chat_with_me" + JSON.stringify({'destination': destination, "referrer_url": referrer_url})
+    });
   </script>
 </body>
-
-</html>

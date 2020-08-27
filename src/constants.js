@@ -43,7 +43,7 @@ export const PROP_TYPES = {
       MESSAGES_TYPES.BUTTONS,
       MESSAGES_TYPES.CAROUSEL,
       MESSAGES_TYPES.IMGREPLY.IMAGE,
-      MESSAGES_TYPES.VIDREPLY.VIDEO
+      MESSAGES_TYPES.VIDREPLY.VIDEO,
     ]),
     id: PropTypes.number,
     text: PropTypes.string,

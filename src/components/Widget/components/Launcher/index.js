@@ -123,32 +123,37 @@ const Launcher = ({
             e.stopPropagation();
             closeTooltip();
           }}
-        >
+          >
           <img src={closeIcon} alt="close" />
         </button>
       </div>
       {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions */}
       <div className="rw-slider-safe-zone" onClick={e => e.stopPropagation()}>
         <Slider {...sliderSettings}>
-          {lastMessages.map(message => (
+          {[ {'type': 'text'} ].map(message => (
             // eslint-disable-next-line jsx-a11y/no-static-element-interactions
             <div
-              className="rw-tooltip-response"
-              onMouseDown={(event) => {
-                dragStatus.current.x = event.clientX;
-                dragStatus.current.y = event.clientY;
-              }}
-              onMouseUp={(event) => {
-                if (
-                  Math.abs(dragStatus.current.x - event.clientX) +
-                    Math.abs(dragStatus.current.y - event.clientY) <
-                  15
+            className="rw-tooltip-response"
+            onMouseDown={(event) => {
+              dragStatus.current.x = event.clientX;
+              dragStatus.current.y = event.clientY;
+            }}
+            onMouseUp={(event) => {
+              if (
+                Math.abs(dragStatus.current.x - event.clientX) +
+                Math.abs(dragStatus.current.y - event.clientY) <
+                15
                 ) {
                   toggle();
                 }
               }}
-            >
-              {getComponentToRender(message)}
+              >
+                <div>
+                  <span>
+                  <div className={'rw-markdown'}>Can I help?</div>
+                  </span>
+                </div>
+              {/* {getComponentToRender(message)} */}
             </div>
           ))}
         </Slider>
@@ -168,7 +173,7 @@ const Launcher = ({
         className="rw-tooltip-decoration rw-popper-arrow"
         ref={setArrowElement}
         style={styles.arrow}
-      />
+        />
     </div>
   );
 
@@ -186,13 +191,15 @@ const Launcher = ({
         <div className="rw-unread-count-pastille">{unreadCount}</div>
       )}
       <img src={openLauncherImage || openLauncher} className="rw-open-launcher" alt="" />
-      {showTooltip && lastMessage && lastMessage.get('sender') === 'response' && (referenceElement ? renderPlacedTooltip() : renderToolTip())}
+      {renderToolTip()}
+      {/* {showTooltip && lastMessage && lastMessage.get('sender') === 'response' && (referenceElement ? renderPlacedTooltip() : renderToolTip())} */}
     </div>
   );
-
+  
   return (
+    <div>
     <button type="button" style={{ backgroundColor: mainColor }} className={className.join(' ')} onClick={toggle}>
-      <Badge badge={badge} />
+      <Badge badge={1} />
       {isChatOpen ? (
         <img
           src={closeImage || close}
@@ -203,6 +210,7 @@ const Launcher = ({
         renderOpenLauncherImage()
       )}
     </button>
+    </div>
   );
 };
 

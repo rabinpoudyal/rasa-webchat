@@ -532,7 +532,8 @@ class Widget extends Component {
       return;
     }
     const { customCss, ...messageClean } = message;
-
+    
+    console.log(messageClean);
     if (isText(messageClean)) {
       this.props.dispatch(addResponseMessage(messageClean.text));
     } else if (isButtons(messageClean)) {
