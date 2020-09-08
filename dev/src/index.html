@@ -28,6 +28,7 @@
   </script>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script> -->
   <script>
+    var payload ="/present_offer"
     function getDeviceType() {
       const ua = navigator.userAgent;
       if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
@@ -43,7 +44,7 @@
       return "desktop";
     };
     try {
-      var article_id = 50
+      var article_id = 245
       var destination = "Texas";
       var device_type = getDeviceType();
     } catch (e) {
@@ -55,7 +56,7 @@
 
     WebChat.default.init({
       selector: "#webchat",
-      initPayload: "/talk_to_local_expert" + JSON.stringify({ "destination": destination, "article_id": article_id }),
+      initPayload: "/talk_to_local_expert" + JSON.stringify({ "destination": destination, "article_id": article_id, "device_type": getDeviceType() }),
       // connectOn: "open",
       customData: { "language": "en" },
       socketUrl: "http://localhost:5005",

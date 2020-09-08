@@ -77,8 +77,17 @@ const Launcher = ({
     placement: (domHighlight && domHighlight.get('tooltipPlacement')) || 'auto'
   });
 
-  const className = ['rw-launcher'];
+  
+  const payload = window.payload || "";
+  let launcher_class = '';
+  if((payload.substring(0,14) == '/present_offer')){
+    launcher_class = 'cashback-launcher';
+  }else if((payload.substring(0,21) == '/talk_to_local_expert')){
+    launcher_class = 'localexpert-launcher';
+  }
 
+  const className = ['rw-launcher', launcher_class];
+  
   const sliderSettings = {
     dots: true,
     infinite: false,
@@ -93,6 +102,10 @@ const Launcher = ({
 
   if (isChatOpen) className.push('rw-hide-sm');
   if (fullScreenMode && isChatOpen) className.push('rw-full-screen rw-hide');
+
+  const renderMessage = () => {
+    return (<div><p>Get 3% cashback in 4 easy steps. &nbsp;<br></br> Chat with me to know more! </p></div>)
+  }
 
   const getComponentToRender = (message, buttonSeparator = false) => {
     const ComponentToRender = (() => {
@@ -158,10 +171,11 @@ const Launcher = ({
           <img src={closeIcon} alt="close" />
         </button>
       </div>
-      { lastMessages.length === 1 ? (<div
+      { lastMessages.length === 0 ? (<div
         onMouseUp={() => toggle()}
       >
-        {getComponentToRender(lastMessages[0], true)}
+        {/* {getComponentToRender(lastMessages[0], true)} */}
+        {renderMessage()}
       </div>) : renderSequenceTooltip(lastMessages) }
     </React.Fragment>
   );
@@ -195,9 +209,10 @@ const Launcher = ({
       {unreadCount > 0 && displayUnreadCount && (
         <div className="rw-unread-count-pastille">{unreadCount}</div>
       )}
-      {/* <img src={openLauncherImage || openLauncher} className="rw-open-launcher" alt="" /> */}
-      <div id="help-text">Can I help?</div>
-      {showTooltip && lastMessage && lastMessage.get('sender') === 'response' && (referenceElement ? renderPlacedTooltip() : renderToolTip())}
+      { ((window.payload || "").substring(0,14) == '/present_offer') ? 
+      <img src={openLauncherImage || openLauncher} className="rw-open-launcher" alt="" /> : <div id="help-text">{"Get Help"}</div> }
+      { (!lastMessage && (window.payload || "").substring(0,14) == '/present_offer') ? renderToolTip() : null}
+      {/* {showTooltip && lastMessage && lastMessage.get('sender') === 'response' && (referenceElement ? renderPlacedTooltip() : renderToolTip())} */}
     </div>
   );
 

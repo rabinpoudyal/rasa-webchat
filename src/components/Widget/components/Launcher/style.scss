@@ -39,7 +39,7 @@
   box-shadow: 10px 10px 10px 0px $grey-3;
   height: 60px;
   margin: 0;
-  width: 150px;
+  width: 60px;
   box-sizing: border-box;
 
   &:focus {
@@ -277,4 +277,8 @@
   // bottom: 0;
   letter-spacing: 0.6;
   font-size: 1.07143rem;
+}
+
+.localexpert-launcher{
+  width: 150px !important;
 }
