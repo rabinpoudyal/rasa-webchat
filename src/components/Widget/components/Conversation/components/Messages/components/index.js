@@ -9,5 +9,5 @@ export {
   Image,
   Message,
   Carousel,
-  Buttons,
+  Buttons
 };

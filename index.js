@@ -46,15 +46,6 @@ const plugin = {
         userBackgroundColor={args.userBackgroundColor}
         assistTextColor={args.assistTextColor}
         assistBackgoundColor={args.assistBackgoundColor}
-        // customComponent={(message) => {
-        //   if (message.facebook){
-        //    return(<SocialLogin message={message} />)
-        //   }else if(message.phone_input){
-        //     return(<WhatsAppInput />)
-        //   }else{
-        //     return(<div></div>)
-        //   }
-        // }}
       />, document.querySelector(args.selector)
     );
   }

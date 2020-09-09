@@ -74,6 +74,7 @@ class Messages extends Component {
 
   render() {
     const { displayTypingIndication, profileAvatar } = this.props;
+    
     const renderMessages = () => {
       const {
         messages,
