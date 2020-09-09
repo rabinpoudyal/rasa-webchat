@@ -45,6 +45,7 @@ const WidgetLayout = (props) => {
       )}
       {!props.embedded && (
         <Launcher
+          initPayload={props.initPayload}
           toggle={props.toggleChat}
           isChatOpen={props.isChatOpen}
           badge={props.badge}
@@ -70,6 +71,7 @@ const mapStateToProps = state => ({
 WidgetLayout.propTypes = {
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   subtitle: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  initPayload: PropTypes.string,
   onSendMessage: PropTypes.func,
   toggleChat: PropTypes.func,
   toggleFullScreen: PropTypes.func,

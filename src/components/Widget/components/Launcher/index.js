@@ -23,6 +23,7 @@ import './style.scss';
 import ThemeContext from '../../ThemeContext';
 
 const Launcher = ({
+  initPayload,
   toggle,
   isChatOpen,
   badge,
@@ -78,11 +79,10 @@ const Launcher = ({
   });
 
   
-  const payload = window.payload || "";
   let launcher_class = '';
-  if((payload.substring(0,14) == '/present_offer')){
+  if((initPayload.substring(0,14) == '/present_offer')){
     launcher_class = 'cashback-launcher';
-  }else if((payload.substring(0,21) == '/talk_to_local_expert')){
+  }else if((initPayload.substring(0,21) == '/talk_to_local_expert')){
     launcher_class = 'localexpert-launcher';
   }
 
@@ -209,9 +209,9 @@ const Launcher = ({
       {unreadCount > 0 && displayUnreadCount && (
         <div className="rw-unread-count-pastille">{unreadCount}</div>
       )}
-      { ((window.payload || "").substring(0,14) == '/present_offer') ? 
+      { ((initPayload || "").substring(0,14) == '/present_offer') ? 
       <img src={openLauncherImage || openLauncher} className="rw-open-launcher" alt="" /> : <div id="help-text">{"Get Help"}</div> }
-      { (!lastMessage && (window.payload || "").substring(0,14) == '/present_offer') ? renderToolTip() : null}
+      { (!lastMessage && (initPayload || "").substring(0,14) == '/present_offer') ? renderToolTip() : null}
       {/* {showTooltip && lastMessage && lastMessage.get('sender') === 'response' && (referenceElement ? renderPlacedTooltip() : renderToolTip())} */}
     </div>
   );
@@ -233,6 +233,7 @@ const Launcher = ({
 };
 
 Launcher.propTypes = {
+  initPayload: PropTypes.string,
   toggle: PropTypes.func,
   isChatOpen: PropTypes.bool,
   badge: PropTypes.number,
