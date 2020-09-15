@@ -11,22 +11,6 @@
 
 <body>
   <div id="webchat"></div>
-  <!-- <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId            : '302093891174396',
-        autoLogAppEvents : true,
-        xfbml            : true,
-        version          : 'v7.0'
-      });
-  
-      window.FB.Event.subscribe('send_to_messenger', function (e) {
-      console.log('webhook...');
-          console.log(e);
-        });
-    };
-  </script>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script> -->
   <script>
     var payload ="/present_offer"
     function getDeviceType() {
@@ -56,7 +40,7 @@
 
     WebChat.default.init({
       selector: "#webchat",
-      initPayload: "/present_offer" + JSON.stringify({ "destination": destination, "article_id": article_id, "device_type": getDeviceType() }),
+      initPayload: "/talk_to_local_expert" + JSON.stringify({ "destination": destination, "article_id": article_id, "device_type": getDeviceType() }),
       // connectOn: "open",
       customData: { "language": "en" },
       socketUrl: "http://localhost:5005",

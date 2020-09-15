@@ -210,7 +210,7 @@ const Launcher = ({
         <div className="rw-unread-count-pastille">{unreadCount}</div>
       )}
       { ((initPayload || "").substring(0,14) == '/present_offer') ? 
-      <img src={openLauncherImage || openLauncher} className="rw-open-launcher" alt="" /> : <div id="help-text">{"Get Help"}</div> }
+      <img src={openLauncherImage || openLauncher} className="rw-open-launcher" alt="" /> : <div id="help-text">{"Can I help?"}</div> }
       { (!lastMessage && (initPayload || "").substring(0,14) == '/present_offer') ? renderToolTip() : null}
       {/* {showTooltip && lastMessage && lastMessage.get('sender') === 'response' && (referenceElement ? renderPlacedTooltip() : renderToolTip())} */}
     </div>
